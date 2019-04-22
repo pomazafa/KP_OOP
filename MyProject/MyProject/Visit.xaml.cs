@@ -15,18 +15,25 @@ using System.Windows.Shapes;
 namespace MyProject
 {
     /// <summary>
-    /// Логика взаимодействия для NewPatientWindow.xaml
+    /// Логика взаимодействия для Visit.xaml
     /// </summary>
-    public partial class NewPatientWindow : Window
+    public partial class Visit : Window
     {
-        public NewPatientWindow()
+        public Visit()
         {
             InitializeComponent();
         }
 
-        private void Return_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             SearchPatient wind = new SearchPatient();
+            wind.Show();
+            Close();
+        }
+
+        private void End_Click(object sender, RoutedEventArgs e)
+        {
+            FirstWindowTherapist wind = new FirstWindowTherapist();
             wind.Show();
             Close();
         }

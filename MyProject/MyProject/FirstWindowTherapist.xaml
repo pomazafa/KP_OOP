@@ -1,14 +1,13 @@
-﻿<Window x:Class="MyProject.FirstWindowTerapevt"
+﻿<Window x:Class="MyProject.FirstWindowTherapist"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="FirstWindowTerapevt" Height="450" Width="800"
+        Title="FirstWindowTerapevt"
         MinHeight="300" MinWidth="360"
-        FontFamily="Georgia"
-        FontSize="18" >
+        Style="{StaticResource MyWindow}" >
     <Window.Background>
         <ImageBrush ImageSource="fon14.jpg" TileMode="None" />
     </Window.Background>
@@ -23,7 +22,7 @@
             <MenuItem Header="Выход"></MenuItem>
         </Menu>
         <Grid>
-            <Button MinHeight="200" MaxHeight="500" MinWidth="300"
+            <Button MinHeight="200" MaxHeight="500" MinWidth="300" Name="Begin" Click="Begin_Click"
                     MaxWidth="660" Content="Начать приём" HorizontalAlignment="Stretch" 
                     Style="{DynamicResource MyButton}" VerticalAlignment="Stretch" 
                     Template="{DynamicResource MyButtonTemplate}"

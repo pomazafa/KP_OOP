@@ -17,11 +17,19 @@ namespace MyProject
     /// <summary>
     /// Логика взаимодействия для FirstWindowTerapevt.xaml
     /// </summary>
-    public partial class FirstWindowTerapevt : Window
+    public partial class FirstWindowTherapist : Window
     {
-        public FirstWindowTerapevt()
+        public FirstWindowTherapist()
         {
             InitializeComponent();
+        }
+
+        private void Begin_Click(object sender, RoutedEventArgs e)
+        {
+            
+            SearchPatient wind = new SearchPatient();
+            wind.Show();
+            Close();
         }
     }
 }

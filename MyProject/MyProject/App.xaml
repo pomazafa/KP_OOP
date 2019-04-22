@@ -6,9 +6,47 @@
              ShutdownMode="OnLastWindowClose">
             
     <Application.Resources>
-       
+        <Style x:Key="MyWindow" TargetType="{x:Type Window}">
+            <Setter Property="WindowState" Value="Maximized"></Setter>
+            <Setter Property="FontSize" Value="22"></Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="fon14.jpg" TileMode="None" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontFamily" Value="Georgia"></Setter>
+        </Style>
+
+        <!-- что-то для вотермарка началось-->
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="#d2d0f0"/>
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="#968abf" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Gray" />
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Opacity" Value="0.8"></Setter>
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+        </Style>
+        
+        <!-- что-то для вотермарка закончилось -->
+
+        <Style x:Key="MyTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="#d2d0f0"></Setter>
+            <Setter Property="Margin" Value="0, 10"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="FontSize" Value="28"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+            <Setter Property="Opacity" Value="0.8"></Setter>
+            <Setter Property="Margin" Value="10, 10"></Setter>
+        </Style>
 
         <Style x:Key="MyButton" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+            <Setter Property="Margin" Value="10, 10"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">

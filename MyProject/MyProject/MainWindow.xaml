@@ -7,11 +7,7 @@
         mc:Ignorable="d"
         Title="Вход"
         MinHeight="300" MinWidth="360"
-        FontFamily="Georgia"
-        FontSize="22" >
-    <Window.Background>
-        <ImageBrush ImageSource="fon14.jpg" TileMode="None" />
-    </Window.Background>
+        Style="{StaticResource MyWindow}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>

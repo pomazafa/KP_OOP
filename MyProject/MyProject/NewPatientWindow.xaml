@@ -5,11 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="NewPatientWindow" Height="450" Width="800"
+        Title="NewPatientWindow" 
         MinHeight="280" MinWidth="340"
-        FontFamily="Georgia"
-        FontSize="18" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
-    <Grid>
-        
+        Style="{StaticResource MyWindow}"  >
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Фамилия" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Surname, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="Surname" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Имя" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=FirstName, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="FirstName" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Отчество" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=FatherName, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="FatherName" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Label Content="Пол: " Grid.Column="0" Grid.Row="3"></Label>
+        <Grid Grid.Column="1" Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <RadioButton Content="М" Grid.Column="0"></RadioButton>
+            <RadioButton Content="Ж" Grid.Column="1"></RadioButton>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Дата рождения (дд.мм.гггг)" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=Date, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="Date" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Телефон (Пример: 29-444-11-22 )" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=Telephone, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="Telephone" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Улица" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Street, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Street" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Дом" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=House, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="House" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Корпус" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Housing, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Housing" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="4" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Квартира" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Flat, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Flat" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Button Name="Return" Click="Return_Click"
+                Content="Назад"
+                    Style="{DynamicResource MyButton}"
+                    Template="{DynamicResource MyButtonTemplate}"
+                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Button Name="Create"
+                Content="Создать"
+                    Style="{DynamicResource MyButton}"
+                    Template="{DynamicResource MyButtonTemplate}"
+                    Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

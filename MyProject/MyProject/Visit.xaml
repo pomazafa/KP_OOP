@@ -1,0 +1,75 @@
+﻿<Window x:Class="MyProject.Visit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProject"
+        mc:Ignorable="d"
+        Title="Visit"
+        Style="{StaticResource MyWindow}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="315"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Жалобы" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Complaints, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Complaints" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Давление" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Pressure, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Pressure" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Рост" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Height, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Height" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Вес" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Weight, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Weight" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Диагноз" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Diagnosis, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Diagnosis" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+            <TextBlock Margin="5,2" Text="Дополнительная информация" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=Additing, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <TextBox Name="Additing" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+        </Grid>
+        <Button Content="Выписать рецепт"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="0"></Button>
+        <Button Content="Назначить новое посещение"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="1"></Button>
+        <Button Content="Выписать больничный"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="2"></Button>
+        <Button Content="Завершить приём" Name="End" Click="End_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="3"></Button>
+        <Button Content="Назад" Name="Back" Click="Back_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="4"></Button>
+    </Grid>
+</Window>
