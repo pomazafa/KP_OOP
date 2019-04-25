@@ -34,10 +34,21 @@ namespace MyProject
 
         private void EnterTher_Click(object sender, RoutedEventArgs e)
         {
-            // тут будет код
-           FirstWindowTherapist wind = new FirstWindowTherapist();
-            wind.Show();
-            Close();
+            using (MyDatabase db = new MyDatabase())
+            {
+                int password = MyPassword.Password.GetHashCode();
+                string login = Login.Text;
+                var user = db.USERS.FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); //returns a single item.
+                if (user != null)
+                {
+                    FirstWindowTherapist wind = new FirstWindowTherapist();
+                    wind.Show();
+                    Close();
+                }
+                else
+                    MessageBox.Show("Неправильный логин или пароль");
+            }
+            
         }
     }
 }

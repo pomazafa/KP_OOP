@@ -18,12 +18,12 @@
             <RowDefinition Height="15"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Content="Введите логин:" Grid.Row="0"></Label>
-        <TextBox Style="{DynamicResource MyTextBox}"
+        <TextBox Style="{DynamicResource MyTextBox}" Name="Login"
                      Grid.Row="1"
                      MaxLength="16" FontSize="28"
                      />
         <Label Content="Введите пароль:" Grid.Row="2"></Label>
-        <PasswordBox HorizontalAlignment="Stretch" Opacity="0.8" 
+        <PasswordBox HorizontalAlignment="Stretch" Opacity="0.8" Name="MyPassword"
                      Background="#d2d0f0" Grid.Row="3" VerticalAlignment="Stretch" 
                      PasswordChar="*" MaxLength="16" FontSize="28" Margin="10, 10"
                      />

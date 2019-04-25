@@ -39,15 +39,21 @@
                        Visibility="{Binding ElementName=Date, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Name="Date" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
         </Grid>
-        <Button Content="Поиск"
+        <Button Content="Поиск" Name="Search"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
-                Grid.Column="0" Grid.Row="4"></Button>
+                Grid.Column="0" Grid.Row="4" Click="Search_Click"></Button>
 
-        <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10">
-            
-            <!-- тут будет инфа выводиться-->
-            
+        <DataGrid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" 
+                  Margin="10" Name="ResSet"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding SURNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FIRSTNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding FATHERSNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BDAY, StringFormat=dd/MM/yyyy}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding GENDER}" Width="auto"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
         <Button Content="Новый пациент" Name="NewInfo" Click="NewInfo_Click"
                 Style="{DynamicResource MyButton}"

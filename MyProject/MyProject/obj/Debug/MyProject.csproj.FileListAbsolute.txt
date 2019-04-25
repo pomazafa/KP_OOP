@@ -24,3 +24,9 @@ F:\S4\KP\MyProject\MyProject\obj\Debug\MyProject.exe
 F:\S4\KP\MyProject\MyProject\obj\Debug\MyProject.csprojAssemblyReference.cache
 F:\S4\KP\MyProject\MyProject\obj\Debug\Visit.g.cs
 F:\S4\KP\MyProject\MyProject\obj\Debug\Visit.baml
+F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.dll
+F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.SqlServer.dll
+F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.xml
+F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.SqlServer.xml
+F:\S4\KP\MyProject\MyProject\bin\Debug\ru\EntityFramework.resources.dll
+F:\S4\KP\MyProject\MyProject\obj\Debug\MyProject.csproj.CopyComplete
