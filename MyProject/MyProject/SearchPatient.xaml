@@ -63,7 +63,7 @@
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="1" Grid.Row="3"></Button>
-        <Button Content="Изменить информацию"
+        <Button Content="Изменить информацию" Name="ChangeInfo" Click="ChangeInfo_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="2" Grid.Row="3"></Button>

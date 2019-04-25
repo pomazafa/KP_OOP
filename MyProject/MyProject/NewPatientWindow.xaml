@@ -51,14 +51,14 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <RadioButton Content="М" Grid.Column="0"></RadioButton>
-            <RadioButton Content="Ж" Grid.Column="1"></RadioButton>
+            <RadioButton Name="GenderM" Content="М" Grid.Column="0"></RadioButton>
+            <RadioButton Name="GenderW" Content="Ж" Grid.Column="1"></RadioButton>
         </Grid>
         <Grid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
                 <TextBlock Margin="5,2" Text="Дата рождения (дд.мм.гггг)" Foreground="{StaticResource brushWatermarkForeground}"
-                        Visibility="{Binding ElementName=Date, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBox Name="Date" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+                        Visibility="{Binding ElementName=DateBlock, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="DateBlock" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
             </Grid>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3">
@@ -93,7 +93,7 @@
                     Style="{DynamicResource MyButton}"
                     Template="{DynamicResource MyButtonTemplate}"
                     Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Button Name="Create"
+        <Button Name="Create" Click="Create_Click"
                 Content="Создать"
                     Style="{DynamicResource MyButton}"
                     Template="{DynamicResource MyButtonTemplate}"
