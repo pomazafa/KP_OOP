@@ -19,14 +19,29 @@ namespace MyProject
     /// </summary>
     public partial class NewPatientWindow : Window
     {
+        bool isNew;
+        ADDRESS a;
+        PATIENT pat;
         public NewPatientWindow()
         {
             InitializeComponent();
+            isNew = true;
+            a = null;
+            pat = null;
         }
 
         public NewPatientWindow(PATIENT p)
         {
             InitializeComponent();
+            isNew = false;
+
+            pat = p;
+
+            MyDatabase db = new MyDatabase();
+
+            a = db.ADDRESS.Find(pat.ADDRESS_ID);
+
+            ADDRESS adr = db.ADDRESS.Find(p.ADDRESS_ID);
 
             Create.Content = "Изменить";
 
@@ -55,9 +70,6 @@ namespace MyProject
                 Telephone.Text = p.TELEPHONE;
             }
 
-            MyDatabase db = new MyDatabase();
-
-            ADDRESS adr = db.ADDRESS.Find(p.ADDRESS_ID);
 
             Street.Text = adr.STREET;
 
@@ -72,11 +84,6 @@ namespace MyProject
             {
                 Flat.Text = adr.FLAT.ToString();
             }
-            p = db.PATIENT.Find(p.PATIENT_ID);
-            db.PATIENT.Remove(p);
-            db.SaveChanges();
-            db.ADDRESS.Remove(adr);
-            db.SaveChanges();
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
@@ -91,7 +98,13 @@ namespace MyProject
             
             if(Surname.Text != "" && FirstName.Text != "" && Street.Text != "" && House.Text != "")
             {
-                PATIENT newP = new PATIENT();
+                MyDatabase db = new MyDatabase();
+
+                PATIENT newP;
+                if (isNew)
+                    newP = new PATIENT();
+                else
+                    newP = db.PATIENT.Find(pat.PATIENT_ID);
                 newP.SURNAME = Surname.Text;
                 newP.FIRSTNAME = FirstName.Text;
                 if (FatherName.Text != "")
@@ -115,8 +128,16 @@ namespace MyProject
                 {
                     newP.TELEPHONE = Telephone.Text;
                 }
+                else
+                {
+                    newP.TELEPHONE = null;
+                }
 
-                ADDRESS newAdr = new ADDRESS();
+                ADDRESS newAdr;
+                if (isNew)
+                    newAdr = new ADDRESS();
+                else
+                    newAdr = a;
                 newAdr.STREET = Street.Text;
                 newAdr.HOUSE = House.Text;
 
@@ -124,22 +145,32 @@ namespace MyProject
                 {
                     newAdr.HOUSING = Housing.Text;
                 }
+                else
+                {
+                    newAdr.HOUSING = null;
+                }
                 int flat;
-                if(Flat.Text != "" && int.TryParse(Flat.Text, out flat))
+                if (Flat.Text != "" && int.TryParse(Flat.Text, out flat))
                 {
                     newAdr.FLAT = flat;
                 }
+                else
+                    newAdr.FLAT = null;
 
-                MyDatabase db = new MyDatabase();
-                db.ADDRESS.Add(newAdr);
-
-                db.SaveChanges();
-
-                newP.ADDRESS_ID = newAdr.ADDRESS_ID;
-
-                db.PATIENT.Add(newP);
+                if (isNew)
+                {
+                    db.ADDRESS.Add(newAdr);
+                }
 
                 db.SaveChanges();
+                if (isNew)
+                {
+                    newP.ADDRESS_ID = newAdr.ADDRESS_ID;
+
+                    db.PATIENT.Add(newP);
+
+                    db.SaveChanges();
+                }
 
                 SearchPatient wind = new SearchPatient();
                 wind.Show();

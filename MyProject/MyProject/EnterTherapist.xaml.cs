@@ -38,7 +38,7 @@ namespace MyProject
             {
                 int password = MyPassword.Password.GetHashCode();
                 string login = Login.Text;
-                var user = db.USERS.FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); //returns a single item.
+                var user = db.USERS.FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); 
                 if (user != null)
                 {
                     FirstWindowTherapist wind = new FirstWindowTherapist();

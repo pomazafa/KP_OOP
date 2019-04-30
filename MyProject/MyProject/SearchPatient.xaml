@@ -59,7 +59,7 @@
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="1" Grid.Row="4" MinWidth="120"></Button>
-        <Button Content="Просмотреть записи"
+        <Button Content="Просмотреть записи" Name="Show" Click="Show_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="1" Grid.Row="3"></Button>

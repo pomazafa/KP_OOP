@@ -67,13 +67,7 @@ namespace MyProject
 
             if (name != "")
             {
-                foreach (PATIENT p in ResSet.Items)
-                {
-                    if (p.FIRSTNAME != name)
-                    {
-                        list.Add(p);
-                    }
-                }
+                list.AddRange(from a1 in db.PATIENT where a1.FIRSTNAME != name select a1);
             }
             
             if (surname != "")
@@ -116,6 +110,18 @@ namespace MyProject
                 wind.Show();
                 Close();
             }
+        }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            //if (ResSet.SelectedItem != null)                  УДАЛЕНИЕ ВЫБРАННОГО ПАЦИЕНТА
+            //{
+            //    PATIENT p = (PATIENT)ResSet.SelectedItem;
+            //    db.PATIENT.Remove(p);
+            //    db.SaveChanges();
+            //    ResSet.Items.Remove(p);
+            //    ResSet.Items.Refresh();
+            //}
         }
     }
 }
