@@ -15,32 +15,41 @@ using System.Windows.Shapes;
 namespace MyProject
 {
     /// <summary>
-    /// Логика взаимодействия для Visit.xaml
+    /// Логика взаимодействия для PastVisits.xaml
     /// </summary>
-    public partial class Visit : Window
+    public partial class PastVisits : Window
     {
+
+        UnitOfWork u;
         PATIENT currentPatient;
-        public Visit()
+        public PastVisits(PATIENT p)
         {
+            u = new UnitOfWork();
+            currentPatient = p;
             InitializeComponent();
+            var elements = from a1 in u.Visits.GetAll() where a1.PATIENT_ID == p.PATIENT_ID select a1;
+
+            foreach (VISIT v in elements)
+            {
+                ResSet.Items.Add(v);
+            }
         }
 
-        public Visit(PATIENT p)
+        public PastVisits()
         {
+            u = new UnitOfWork();
             InitializeComponent();
-            currentPatient = p;
+            var elements = from a1 in u.Visits.GetAll() where a1.VISIT_DATE_TIME.Date == DateTime.Now.Date select a1;
+
+            foreach (VISIT v in elements)
+            {
+                ResSet.Items.Add(v);
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             SearchPatient wind = new SearchPatient();
-            wind.Show();
-            Close();
-        }
-
-        private void End_Click(object sender, RoutedEventArgs e)
-        {
-            FirstWindowTherapist wind = new FirstWindowTherapist();
             wind.Show();
             Close();
         }

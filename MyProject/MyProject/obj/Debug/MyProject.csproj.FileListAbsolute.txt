@@ -30,3 +30,5 @@ F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.xml
 F:\S4\KP\MyProject\MyProject\bin\Debug\EntityFramework.SqlServer.xml
 F:\S4\KP\MyProject\MyProject\bin\Debug\ru\EntityFramework.resources.dll
 F:\S4\KP\MyProject\MyProject\obj\Debug\MyProject.csproj.CopyComplete
+F:\S4\KP\MyProject\MyProject\obj\Debug\PastVisits.g.cs
+F:\S4\KP\MyProject\MyProject\obj\Debug\PastVisits.baml

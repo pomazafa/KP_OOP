@@ -1,0 +1,40 @@
+﻿<Window x:Class="MyProject.PastVisits"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProject"
+        xmlns:dg="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        mc:Ignorable="d"
+        Title="Записи" Style="{StaticResource MyWindow}">
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"
+                  Name="ResSet"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id пациента" Binding="{Binding PATIENT_ID}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding VISIT_DATE_TIME, StringFormat=dd/MM/yyyy}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Жалобы" Binding="{Binding COMPLAINTS}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Давление" Binding="{Binding PRESSURE}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Диагноз" Binding="{Binding DIAGNOSIS}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Рост" Binding="{Binding HEIGHT}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вес" Binding="{Binding WEIGHT}" Width="auto"></DataGridTextColumn>
+                <dg:DataGridTemplateColumn Header="Дополнительно" Width="*">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ADDITIONAL_INFORMATION}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Назад" Name="Back" Click="Back_Click" 
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Row="1" MinHeight="50"></Button>
+    </Grid>
+</Window>

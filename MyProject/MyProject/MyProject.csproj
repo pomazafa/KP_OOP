@@ -69,11 +69,16 @@
     </ApplicationDefinition>
     <Compile Include="ADDRESS.cs" />
     <Compile Include="MyDatabase.cs" />
+    <Compile Include="PastVisits.xaml.cs">
+      <DependentUpon>PastVisits.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PATIENT.cs" />
     <Compile Include="RECIPE.cs" />
+    <Compile Include="Repository.cs" />
     <Compile Include="SearchPatient.xaml.cs">
       <DependentUpon>SearchPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="USERS.cs" />
     <Compile Include="VISIT.cs" />
     <Compile Include="Visit.xaml.cs">
@@ -106,6 +111,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PastVisits.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

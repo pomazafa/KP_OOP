@@ -19,9 +19,11 @@ namespace MyProject
     /// </summary>
     public partial class EnterTherapist : Window
     {
+        UnitOfWork u;
         public EnterTherapist()
         {
             InitializeComponent();
+            u = new UnitOfWork();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -38,7 +40,7 @@ namespace MyProject
             {
                 int password = MyPassword.Password.GetHashCode();
                 string login = Login.Text;
-                var user = db.USERS.FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); 
+                var user = u.Users.GetAll().FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); 
                 if (user != null)
                 {
                     FirstWindowTherapist wind = new FirstWindowTherapist();

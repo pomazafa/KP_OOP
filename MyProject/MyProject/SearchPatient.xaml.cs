@@ -19,28 +19,31 @@ namespace MyProject
     /// </summary>
     public partial class SearchPatient : Window
     {
-        MyDatabase db;
+        UnitOfWork u;
         public SearchPatient()
         {
-            db = new MyDatabase();
+            u = new UnitOfWork();
             InitializeComponent();
 
-            foreach(PATIENT p in db.PATIENT)
+            foreach(PATIENT p in u.Patients.GetAll())
             {
                 ResSet.Items.Add(p);
             }
+            ResSet.SelectionMode = DataGridSelectionMode.Single;
         }
 
-        private void ShowTalons_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Choose_Click(object sender, RoutedEventArgs e)
         {
-            Visit wind = new Visit();
-            wind.Show();
-            Close();
+            if (ResSet.SelectedItem != null)
+            {
+                PATIENT p = (PATIENT)ResSet.SelectedItem;
+                Visit wind = new Visit(p);
+                wind.Show();
+                Close();
+            }
+            else
+                MessageBox.Show("Выберите пациента");
         }
 
         private void NewInfo_Click(object sender, RoutedEventArgs e)
@@ -58,7 +61,7 @@ namespace MyProject
 
             ResSet.Items.Clear();
             ResSet.Items.Refresh();
-            foreach (PATIENT p in db.PATIENT)
+            foreach (PATIENT p in u.Patients.GetAll())
             {
                 ResSet.Items.Add(p);
             }
@@ -67,7 +70,7 @@ namespace MyProject
 
             if (name != "")
             {
-                list.AddRange(from a1 in db.PATIENT where a1.FIRSTNAME != name select a1);
+                list.AddRange(from a1 in u.Patients.GetAll() where a1.FIRSTNAME != name select a1);
             }
             
             if (surname != "")
@@ -110,10 +113,23 @@ namespace MyProject
                 wind.Show();
                 Close();
             }
+            else
+                MessageBox.Show("Выберите пациента");
         }
 
         private void Show_Click(object sender, RoutedEventArgs e)
         {
+
+            if (ResSet.SelectedItem != null)
+            {
+                PATIENT p = (PATIENT)ResSet.SelectedItem;
+                PastVisits wind = new PastVisits(p);
+                wind.Show();
+                Close();
+            }
+            else
+                MessageBox.Show("Выберите пациента");
+
             //if (ResSet.SelectedItem != null)                  УДАЛЕНИЕ ВЫБРАННОГО ПАЦИЕНТА
             //{
             //    PATIENT p = (PATIENT)ResSet.SelectedItem;
@@ -122,6 +138,18 @@ namespace MyProject
             //    ResSet.Items.Remove(p);
             //    ResSet.Items.Refresh();
             //}
+
+
+
+        }
+
+        private void ShowTalons_Click(object sender, RoutedEventArgs e)
+        {
+            //НАПИСАТЬ КОГДА БУДУТ РЕАЛИЗОВАНЫ  ВИЗИТЫ
+
+            PastVisits wind = new PastVisits();
+            wind.Show();
+            Close();
         }
     }
 }

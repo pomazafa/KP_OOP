@@ -34,7 +34,6 @@ namespace MyProject
 
         public bool IS_PLANNED { get; set; }
 
-        [Required]
         public string DIAGNOSIS { get; set; }
 
         public string ADDITIONAL_INFORMATION { get; set; }
