@@ -53,5 +53,10 @@ namespace MyProject
             wind.Show();
             Close();
         }
+
+        private void Choose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

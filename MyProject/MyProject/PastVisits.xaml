@@ -12,7 +12,11 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"
                   Name="ResSet"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
@@ -35,6 +39,10 @@
         <Button Content="Назад" Name="Back" Click="Back_Click" 
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
-                Grid.Row="1" MinHeight="50"></Button>
+                Grid.Row="1" MinHeight="50" Grid.Column="0"></Button>
+        <Button Content="Выбрать" Name="Choose" Click="Choose_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Row="1" MinHeight="50" Grid.Column="1"></Button>
     </Grid>
 </Window>

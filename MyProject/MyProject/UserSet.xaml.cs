@@ -10,32 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MyProject
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UserSet.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserSet : Window
     {
-        public MainWindow()
+        public UserSet()
         {
-
             InitializeComponent();
-        }
-
-        private void EnterTher_Click(object sender, RoutedEventArgs e)
-        {
-            EnterTherapist et = new EnterTherapist();
-            Close();
-            et.Show();
-        }
-
-        private void Patient_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

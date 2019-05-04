@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="FirstWindowTerapevt"
+        Title="Главная"
         MinHeight="300" MinWidth="360"
         Style="{StaticResource MyWindow}" >
     <Window.Background>

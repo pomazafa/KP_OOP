@@ -22,9 +22,11 @@ namespace MyProject
         bool isNew;
         ADDRESS a;
         PATIENT pat;
+        UnitOfWork u;
         public NewPatientWindow()
         {
             InitializeComponent();
+            u = new UnitOfWork();
             isNew = true;
             a = null;
             pat = null;
@@ -34,55 +36,62 @@ namespace MyProject
         {
             InitializeComponent();
             isNew = false;
-
+            u = new UnitOfWork();
             pat = p;
 
-            MyDatabase db = new MyDatabase();
+            //MyDatabase db = new MyDatabase();
 
-            a = db.ADDRESS.Find(pat.ADDRESS_ID);
+            //a = db.ADDRESS.Find(pat.ADDRESS_ID);
 
-            ADDRESS adr = db.ADDRESS.Find(p.ADDRESS_ID);
+            a = u.Addresses.Get(p.ADDRESS_ID);
 
             Create.Content = "Изменить";
-
-            Surname.Text = p.SURNAME;
-            FirstName.Text = p.FIRSTNAME;
-            if(p.FATHERSNAME != null)
+            if (a != null)
             {
-                FatherName.Text = p.FATHERSNAME;
+                Surname.Text = p.SURNAME;
+                FirstName.Text = p.FIRSTNAME;
+                if (p.FATHERSNAME != null)
+                {
+                    FatherName.Text = p.FATHERSNAME;
+                }
+                if (p.GENDER == "м")
+                {
+                    GenderM.IsChecked = true;
+                }
+                if (p.GENDER == "ж")
+                {
+                    GenderW.IsChecked = true;
+                }
+
+                if (p.BDAY != null)
+                {
+                    DateBlock.Text = p.BDAY.Value.ToShortDateString();
+                }
+
+                if (p.TELEPHONE != null)
+                {
+                    Telephone.Text = p.TELEPHONE;
+                }
+
+
+                Street.Text = a.STREET;
+
+                House.Text = a.HOUSE;
+
+                if (a.HOUSING != null)
+                {
+                    Housing.Text = a.HOUSING;
+                }
+
+                if (a.FLAT != null)
+                {
+                    Flat.Text = a.FLAT.ToString();
+                }
             }
-            if(p.GENDER == "м")
+            else
             {
-                GenderM.IsChecked = true;
-            }
-            if(p.GENDER == "ж")
-            {
-                GenderW.IsChecked = true;
-            }
-
-            if (p.BDAY != null)
-            {
-                DateBlock.Text = p.BDAY.Value.ToShortDateString();
-            }
-
-            if(p.TELEPHONE != null)
-            {
-                Telephone.Text = p.TELEPHONE;
-            }
-
-
-            Street.Text = adr.STREET;
-
-            House.Text = adr.HOUSE;
-
-            if (adr.HOUSING != null)
-            {
-                Housing.Text = adr.HOUSING;
-            }
-
-            if (adr.FLAT != null)
-            {
-                Flat.Text = adr.FLAT.ToString();
+                MessageBox.Show("Произошла ошибка, адрес не найден");
+                Close();
             }
         }
 
@@ -98,13 +107,13 @@ namespace MyProject
             
             if(Surname.Text != "" && FirstName.Text != "" && Street.Text != "" && House.Text != "")
             {
-                MyDatabase db = new MyDatabase();
-
+                //MyDatabase db = new MyDatabase();
+                
                 PATIENT newP;
                 if (isNew)
                     newP = new PATIENT();
                 else
-                    newP = db.PATIENT.Find(pat.PATIENT_ID);
+                    newP = u.Patients.Get(pat.PATIENT_ID);
                 newP.SURNAME = Surname.Text;
                 newP.FIRSTNAME = FirstName.Text;
                 if (FatherName.Text != "")
@@ -159,17 +168,21 @@ namespace MyProject
 
                 if (isNew)
                 {
-                    db.ADDRESS.Add(newAdr);
+                    //db.ADDRESS.Add(newAdr);
+                    u.Addresses.Create(newAdr);
                 }
 
-                db.SaveChanges();
+                //db.SaveChanges();
+                u.Save();
                 if (isNew)
                 {
                     newP.ADDRESS_ID = newAdr.ADDRESS_ID;
 
-                    db.PATIENT.Add(newP);
+                    u.Patients.Create(newP);
+                    u.Save();
+                    //db.PATIENT.Add(newP);
 
-                    db.SaveChanges();
+                    //db.SaveChanges();
                 }
 
                 SearchPatient wind = new SearchPatient();

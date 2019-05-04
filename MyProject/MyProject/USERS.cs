@@ -29,5 +29,10 @@ namespace MyProject
 
         [Required]
         public int PASSWORD_HASH { get; set; }
+
+        //дописывала сама, должно работать
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VISIT> VISITs { get; set; }
     }
 }

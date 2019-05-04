@@ -68,6 +68,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ADDRESS.cs" />
+    <Compile Include="AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyDatabase.cs" />
     <Compile Include="PastVisits.xaml.cs">
       <DependentUpon>PastVisits.xaml</DependentUpon>
@@ -80,10 +83,17 @@
     </Compile>
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="USERS.cs" />
+    <Compile Include="UserSet.xaml.cs">
+      <DependentUpon>UserSet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VISIT.cs" />
     <Compile Include="Visit.xaml.cs">
       <DependentUpon>Visit.xaml</DependentUpon>
     </Compile>
+    <Page Include="AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EnterTherapist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchPatient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserSet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

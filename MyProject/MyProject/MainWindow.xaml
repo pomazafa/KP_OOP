@@ -23,7 +23,7 @@
                     Margin="20" Grid.Row="1" Name="EnterTher"
                     Click="EnterTher_Click"/>
 
-        <Button MinHeight="50" MaxHeight="300" MinWidth="70"
+        <Button MinHeight="50" MaxHeight="300" MinWidth="70" Name="Patient" Click="Patient_Click"
                     MaxWidth="500" Content="Войти как пациент" HorizontalAlignment="Stretch" 
                     Style="{DynamicResource MyButton}" VerticalAlignment="Stretch" 
                     Template="{DynamicResource MyButtonTemplate}"

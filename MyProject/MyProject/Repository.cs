@@ -34,6 +34,12 @@ namespace MyProject
         {
             return db.ADDRESS.Find(id);
         }
+        public ADDRESS Get(int? id)
+        {
+            if (id != null)
+                return db.ADDRESS.Find(id);
+            return null;
+        }
 
         public void Create(ADDRESS adr)
         {

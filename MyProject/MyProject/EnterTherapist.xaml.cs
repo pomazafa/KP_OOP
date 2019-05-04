@@ -43,9 +43,18 @@ namespace MyProject
                 var user = u.Users.GetAll().FirstOrDefault(x => x.PASSWORD_HASH == password && x.LOGIN == login); 
                 if (user != null)
                 {
-                    FirstWindowTherapist wind = new FirstWindowTherapist();
-                    wind.Show();
-                    Close();
+                    if (user.LOGIN == "admin")
+                    {
+                        AdminWindow wind = new AdminWindow();
+                        wind.Show();
+                        Close();
+                    }
+                    else
+                    {
+                        FirstWindowTherapist wind = new FirstWindowTherapist();
+                        wind.Show();
+                        Close();
+                    }
                 }
                 else
                     MessageBox.Show("Неправильный логин или пароль");

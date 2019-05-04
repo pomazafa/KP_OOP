@@ -42,5 +42,9 @@ namespace MyProject
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RECIPE> RECIPE { get; set; }
+
+        public int? USER_ID { get; set; }
+
+        public virtual USERS USERS { get; set; }
     }
 }
