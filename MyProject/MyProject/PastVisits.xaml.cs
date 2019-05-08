@@ -22,25 +22,32 @@ namespace MyProject
 
         UnitOfWork u;
         PATIENT currentPatient;
-        public PastVisits(PATIENT p)
+        USERS user;
+        DateTime datetime1;
+        public PastVisits(PATIENT p, USERS user, DateTime dt)
         {
             u = new UnitOfWork();
-            currentPatient = p;
+            currentPatient = null;
             InitializeComponent();
+            datetime1 = dt;
+            this.user = user;
             var elements = from a1 in u.Visits.GetAll() where a1.PATIENT_ID == p.PATIENT_ID select a1;
 
             foreach (VISIT v in elements)
             {
                 ResSet.Items.Add(v);
             }
+
+            Choose.Visibility = System.Windows.Visibility.Hidden;
         }
 
-        public PastVisits()
+        public PastVisits(USERS user, DateTime dt)
         {
             u = new UnitOfWork();
             InitializeComponent();
-            var elements = from a1 in u.Visits.GetAll() where a1.VISIT_DATE_TIME.Date == DateTime.Now.Date select a1;
-
+            var elements = from a1 in u.Visits.GetAll() where a1.VISIT_DATE_TIME1.Date == DateTime.Now.Date && a1.IS_COMPLETED == false && a1.USER_ID == user.USER_ID select a1;
+            this.user = user;
+            datetime1 = dt;
             foreach (VISIT v in elements)
             {
                 ResSet.Items.Add(v);
@@ -49,14 +56,24 @@ namespace MyProject
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            SearchPatient wind = new SearchPatient();
+            SearchPatient wind = new SearchPatient(user, datetime1);
             wind.Show();
             Close();
         }
 
         private void Choose_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ResSet.SelectedItem != null)
+            {
+                VISIT v = (VISIT)ResSet.SelectedItem;
+                int pat = v.PATIENT_ID.Value;
+                currentPatient = u.Patients.Get(pat);
+                Visit wind = new Visit(currentPatient, user, v, datetime1);
+                wind.Show();
+                Close();
+            }
+            else
+                MessageBox.Show("Выберите пациента");
         }
     }
 }

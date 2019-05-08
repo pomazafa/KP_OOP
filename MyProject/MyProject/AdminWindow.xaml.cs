@@ -41,5 +41,33 @@ namespace MyProject
             wind.Show();
             Close();
         }
+
+        private void Change_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResSet.SelectedItem != null)
+            {
+                USERS user = (USERS)ResSet.SelectedItem;
+                AdminCreateOrChange wind = new AdminCreateOrChange(user);
+                wind.ShowDialog();
+                Refresh();
+            }
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            AdminCreateOrChange wind = new AdminCreateOrChange();
+            wind.ShowDialog();
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            ResSet.Items.Clear();
+            foreach(USERS us in from a1 in u.Users.GetAll() where a1.LOGIN != "admin" select a1)
+            {
+                ResSet.Items.Add(us);
+            }
+
+        }
     }
 }

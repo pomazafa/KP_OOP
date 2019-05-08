@@ -23,8 +23,8 @@ namespace MyProject
         [Column(TypeName = "date")]
         public DateTime? EXPIRATION_DATE { get; set; }
 
-        public int? VISIT_ID { get; set; }
+        public int? PATIENT_ID { get; set; }
 
-        public virtual VISIT VISIT { get; set; }
+        public virtual PATIENT PATIENT { get; set; }
     }
 }

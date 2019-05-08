@@ -17,9 +17,9 @@
 
             <MenuItem Header="Изменение записей" ></MenuItem>
 
-            <MenuItem Header="О программе" ></MenuItem>
+            <MenuItem Header="О программе" Name="About" Click="About_Click"></MenuItem>
 
-            <MenuItem Header="Выход"></MenuItem>
+            <MenuItem Header="Выход" Name="Exit" Click="Exit_Click"></MenuItem>
         </Menu>
         <Grid>
             <Button MinHeight="200" MaxHeight="500" MinWidth="300" Name="Begin" Click="Begin_Click"

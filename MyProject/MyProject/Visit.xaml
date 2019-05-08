@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
+        MinWidth="600"
+        MinHeight="400"
         Title="Сведения о посещении"
         Style="{StaticResource MyWindow}">
     <Grid Margin="10">
@@ -51,22 +53,20 @@
                        Visibility="{Binding ElementName=Additing, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Name="Additing" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
         </Grid>
-        <Button Content="Выписать рецепт"
+        <Button Content="Выписать рецепт" Name="PrintRecipe" Click="PrintRecipe_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="3" Grid.Row="0"></Button>
         <Button Content="Назначить новое посещение"
+                Name="NewVisit" Click="NewVisit_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="3" Grid.Row="1"></Button>
-        <Button Content="Выписать больничный"
-                Style="{DynamicResource MyButton}"
-                Template="{DynamicResource MyButtonTemplate}"
-                Grid.Column="3" Grid.Row="2"></Button>
+       
         <Button Content="Завершить приём" Name="End" Click="End_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
-                Grid.Column="3" Grid.Row="3"></Button>
+                Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"></Button>
         <Button Content="Назад" Name="Back" Click="Back_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"

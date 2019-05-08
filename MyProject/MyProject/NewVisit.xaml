@@ -1,0 +1,59 @@
+﻿<Window x:Class="MyProject.NewVisit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProject"
+        mc:Ignorable="d"
+        Title="NewVisit" Style="{StaticResource MyWindow}"
+        MinHeight="460" MinWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel LastChildFill="True" Margin="20"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Label Content="Терапевты: " DockPanel.Dock="Top"></Label>
+            <DataGrid DockPanel.Dock="Bottom" 
+                  Name="ResSet" SelectionChanged="ResSet_SelectionChanged"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding SURNAME}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding NAME}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding FATHERSNAME}" Width="*"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Смена" Binding="{Binding CHANGE}" Width="auto"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <DockPanel Margin="20" Grid.Row="1" Grid.Column="0" LastChildFill="True" Grid.RowSpan="2">
+            <Label Content="Дата посещения: " DockPanel.Dock="Top"></Label>
+            <Calendar DockPanel.Dock="Bottom" Name="calendar" SelectedDatesChanged="ResSet_SelectionChanged"></Calendar>
+        </DockPanel>
+
+            <DataGrid  Grid.Row="1" Grid.Column="1" Margin="20" Grid.RowSpan="2"
+                  Name="Dates"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                <DataGridTextColumn Header="Часы" Binding="{Binding Path=Hours}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Минуты" Binding="{Binding Path=Minutes}" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Записаться" Name="Ok" Click="Ok_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="2" Grid.Row="1"></Button>
+        <Button Content="Назад" Name="Back" Click="Back_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="2" Grid.Row="2"></Button>
+    </Grid>
+</Window>

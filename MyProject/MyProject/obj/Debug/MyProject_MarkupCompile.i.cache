@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\S4\KP\MyProject\MyProject\App.xaml
-91789992972
+12-225842051
 
-22497681280
+25179726815
 181740523281
-AdminWindow.xaml;EnterTherapist.xaml;FirstWindowTherapist.xaml;MainWindow.xaml;NewPatientWindow.xaml;PastVisits.xaml;SearchPatient.xaml;UserSet.xaml;Visit.xaml;
+AdminCreateOrChange.xaml;AdminWindow.xaml;AuthorizePatient.xaml;EnterTherapist.xaml;FirstWindowTherapist.xaml;MainWindow.xaml;NewPatientWindow.xaml;NewRecipe.xaml;NewVisit.xaml;PastVisits.xaml;SearchPatient.xaml;Visit.xaml;
 
 True
 

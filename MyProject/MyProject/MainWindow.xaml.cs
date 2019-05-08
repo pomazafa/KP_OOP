@@ -35,7 +35,9 @@ namespace MyProject
 
         private void Patient_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthorizePatient wind = new AuthorizePatient();
+            wind.Show();
+            Close();
         }
     }
 }

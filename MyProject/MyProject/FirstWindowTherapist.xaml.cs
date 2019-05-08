@@ -19,15 +19,29 @@ namespace MyProject
     /// </summary>
     public partial class FirstWindowTherapist : Window
     {
-        public FirstWindowTherapist()
+        USERS user;
+        public FirstWindowTherapist(USERS user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void Begin_Click(object sender, RoutedEventArgs e)
         {
             
-            SearchPatient wind = new SearchPatient();
+            SearchPatient wind = new SearchPatient(user, DateTime.Now);
+            wind.Show();
+            Close();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Программное средство терапевт, Дубень Полина, 2019г", "О программе");
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow wind = new MainWindow();
             wind.Show();
             Close();
         }

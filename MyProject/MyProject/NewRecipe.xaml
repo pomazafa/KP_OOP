@@ -1,0 +1,55 @@
+﻿<Window x:Class="MyProject.NewRecipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyProject"
+        mc:Ignorable="d"
+        Title="Выписать рецепт" Style="{StaticResource MyWindow}"
+        MinWidth="550" MinHeight="250">
+    <Grid> 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Медикамент" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=Med, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="Med" MaxLength="30" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1"  Grid.Row="0">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Количество" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=Quant, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="Quant" MaxLength="20" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.RowSpan="2" Grid.Row="1">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="Годен до (дд.мм.гггг)" Foreground="{StaticResource brushWatermarkForeground}"
+                        Visibility="{Binding ElementName=DateBlock, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="DateBlock" MaxLength="10" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>
+        <Button Name="Ok" Click="Ok_Click"
+                Content="Ок"
+                    Style="{DynamicResource MyButton}"
+                    Template="{DynamicResource MyButtonTemplate}"
+                    Grid.Row="1" Grid.Column="1" />
+        <Button Name="Return" Click="Return_Click"
+                Content="Назад"
+                    Style="{DynamicResource MyButton}"
+                    Template="{DynamicResource MyButtonTemplate}"
+                    Grid.Row="2" Grid.Column="1" />
+    </Grid>
+</Window>

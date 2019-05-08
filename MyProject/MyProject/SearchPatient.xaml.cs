@@ -20,11 +20,14 @@ namespace MyProject
     public partial class SearchPatient : Window
     {
         UnitOfWork u;
-        public SearchPatient()
+        USERS user;
+        DateTime datetime1;
+        public SearchPatient(USERS user, DateTime dt)
         {
             u = new UnitOfWork();
             InitializeComponent();
-
+            this.user = user;
+            datetime1 = dt;
             foreach(PATIENT p in u.Patients.GetAll())
             {
                 ResSet.Items.Add(p);
@@ -38,7 +41,7 @@ namespace MyProject
             if (ResSet.SelectedItem != null)
             {
                 PATIENT p = (PATIENT)ResSet.SelectedItem;
-                Visit wind = new Visit(p);
+                Visit wind = new Visit(p, user, datetime1);
                 wind.Show();
                 Close();
             }
@@ -48,7 +51,7 @@ namespace MyProject
 
         private void NewInfo_Click(object sender, RoutedEventArgs e)
         {
-            NewPatientWindow wind = new NewPatientWindow();
+            NewPatientWindow wind = new NewPatientWindow(user, datetime1);
             wind.Show();
             Close();
         }
@@ -109,7 +112,7 @@ namespace MyProject
             if (ResSet.SelectedItem != null)
             {
                 PATIENT p = (PATIENT)ResSet.SelectedItem;
-                NewPatientWindow wind = new NewPatientWindow(p);
+                NewPatientWindow wind = new NewPatientWindow(p, user, datetime1);
                 wind.Show();
                 Close();
             }
@@ -123,33 +126,22 @@ namespace MyProject
             if (ResSet.SelectedItem != null)
             {
                 PATIENT p = (PATIENT)ResSet.SelectedItem;
-                PastVisits wind = new PastVisits(p);
+                PastVisits wind = new PastVisits(p, user, datetime1);
                 wind.Show();
                 Close();
             }
             else
                 MessageBox.Show("Выберите пациента");
-
-            //if (ResSet.SelectedItem != null)                  УДАЛЕНИЕ ВЫБРАННОГО ПАЦИЕНТА
-            //{
-            //    PATIENT p = (PATIENT)ResSet.SelectedItem;
-            //    db.PATIENT.Remove(p);
-            //    db.SaveChanges();
-            //    ResSet.Items.Remove(p);
-            //    ResSet.Items.Refresh();
-            //}
-
-
-
         }
 
         private void ShowTalons_Click(object sender, RoutedEventArgs e)
         {
-            //НАПИСАТЬ КОГДА БУДУТ РЕАЛИЗОВАНЫ  ВИЗИТЫ
 
-            PastVisits wind = new PastVisits();
+            PATIENT p = (PATIENT)ResSet.SelectedItem;
+            PastVisits wind = new PastVisits(user, datetime1);
             wind.Show();
             Close();
+
         }
     }
 }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="Администрирование учётных записей"  Style="{StaticResource MyWindow}">
+        Title="Администрирование учётных записей"  Style="{StaticResource MyWindow}"
+        MinHeight="300" MinWidth="820">
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -25,17 +26,18 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SURNAME}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding NAME}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding FATHERSNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Смена" Binding="{Binding CHANGE}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Назад" Name="Back" Click="Back_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Row="1" MinHeight="50" Grid.Column="0"></Button>
-        <Button Content="Изменить"
+        <Button Content="Изменить" Name="Change" Click="Change_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Row="1" MinHeight="50" Grid.Column="1"></Button>
-        <Button Content="Создать"
+        <Button Content="Создать" Name="Create" Click="Create_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Row="1" MinHeight="50" Grid.Column="2"></Button>

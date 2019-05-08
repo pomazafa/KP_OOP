@@ -51,7 +51,7 @@ namespace MyProject
                     }
                     else
                     {
-                        FirstWindowTherapist wind = new FirstWindowTherapist();
+                        FirstWindowTherapist wind = new FirstWindowTherapist(user);
                         wind.Show();
                         Close();
                     }

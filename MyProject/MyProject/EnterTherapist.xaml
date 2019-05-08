@@ -5,37 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="Вход" MinHeight="330" MinWidth="380"
+        Title="Вход" MinHeight="430" MinWidth="340"
         Style="{StaticResource MyWindow}" >
     <Grid Margin="40, 10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
-            <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
-            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="15"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Content="Введите логин:" Grid.Row="0"></Label>
+        <DockPanel  Grid.Row="1" LastChildFill="True">
+            <Label Content="Введите логин:" DockPanel.Dock="Top"></Label>
         <TextBox Style="{DynamicResource MyTextBox}" Name="Login"
-                     Grid.Row="1"
+                     DockPanel.Dock="Bottom"
                      MaxLength="16" FontSize="28"
                      />
-        <Label Content="Введите пароль:" Grid.Row="2"></Label>
+        </DockPanel>
+        <DockPanel  Grid.Row="2" LastChildFill="True">
+            <Label Content="Введите пароль:" DockPanel.Dock="Top"></Label>
         <PasswordBox HorizontalAlignment="Stretch" Opacity="0.8" Name="MyPassword"
                      Background="#d2d0f0" Grid.Row="3" VerticalAlignment="Stretch" 
-                     PasswordChar="*" MaxLength="16" FontSize="28" Margin="10, 10"
+                     PasswordChar="*" MaxLength="16" FontSize="28" Margin="10, 10" DockPanel.Dock="Bottom"
                      />
+        </DockPanel>
         <Button      MinWidth="70" Name="EnterTher" Click="EnterTher_Click"
                      Content="Подтвердить"
                     Style="{DynamicResource MyButton}"
                     Template="{DynamicResource MyButtonTemplate}"
-                    Grid.Row="4"/>
+                    Grid.Row="3"/>
         <Button Name="BackButton" Click="BackButton_Click"
                 Content="Назад" 
                     Style="{DynamicResource MyButton}"
                     Template="{DynamicResource MyButtonTemplate}"
-                    Grid.Row="5"/>
+                    Grid.Row="4"/>
     </Grid>
 </Window>

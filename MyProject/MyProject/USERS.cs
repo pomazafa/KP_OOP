@@ -34,5 +34,8 @@ namespace MyProject
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VISIT> VISITs { get; set; }
+
+        [StringLength(1)]
+        public string CHANGE { get; set; }
     }
 }

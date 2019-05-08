@@ -23,19 +23,25 @@ namespace MyProject
         ADDRESS a;
         PATIENT pat;
         UnitOfWork u;
-        public NewPatientWindow()
+        DateTime datetime1;
+        USERS user;
+        public NewPatientWindow(USERS user, DateTime dt)
         {
             InitializeComponent();
             u = new UnitOfWork();
+            this.user = user;
+            datetime1 = dt;
             isNew = true;
             a = null;
             pat = null;
         }
 
-        public NewPatientWindow(PATIENT p)
+        public NewPatientWindow(PATIENT p, USERS user, DateTime dt)
         {
+            datetime1 = dt;
             InitializeComponent();
             isNew = false;
+            this.user = user;
             u = new UnitOfWork();
             pat = p;
 
@@ -97,7 +103,7 @@ namespace MyProject
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
-            SearchPatient wind = new SearchPatient();
+            SearchPatient wind = new SearchPatient(user, datetime1);
             wind.Show();
             Close();
         }
@@ -185,13 +191,25 @@ namespace MyProject
                     //db.SaveChanges();
                 }
 
-                SearchPatient wind = new SearchPatient();
+                SearchPatient wind = new SearchPatient(user, datetime1);
                 wind.Show();
                 Close();
             }
             else
             {
                 MessageBox.Show("Заполните поля!!!!!!");
+            }
+        }
+
+        private void Flat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string val = "1234567890";
+            foreach(char c in ((TextBox)sender).Text)
+            {
+                if (!val.Contains(c))
+                {
+                    ((TextBox)sender).Text = ((TextBox)sender).Text.Remove(((TextBox)sender).Text.IndexOf(c), 1);
+                }
             }
         }
     }

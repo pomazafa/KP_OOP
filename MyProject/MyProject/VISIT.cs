@@ -12,15 +12,14 @@ namespace MyProject
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VISIT()
         {
-            RECIPE = new HashSet<RECIPE>();
         }
 
         [Key]
         public int VISIT_ID { get; set; }
 
         public int? PATIENT_ID { get; set; }
-
-        public DateTime VISIT_DATE_TIME { get; set; }
+        [Required]
+        public DateTime VISIT_DATE_TIME1 { get; set; }
 
         [StringLength(300)]
         public string COMPLAINTS { get; set; }
@@ -31,8 +30,10 @@ namespace MyProject
         public decimal? HEIGHT { get; set; }
 
         public decimal? WEIGHT { get; set; }
-
+        [Required]
         public bool IS_PLANNED { get; set; }
+        [Required]
+        public bool IS_COMPLETED { get; set; }
 
         public string DIAGNOSIS { get; set; }
 
@@ -40,11 +41,12 @@ namespace MyProject
 
         public virtual PATIENT PATIENT { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RECIPE> RECIPE { get; set; }
+        
 
         public int? USER_ID { get; set; }
 
         public virtual USERS USERS { get; set; }
+        public DateTime VISIT_DATE_TIME2 { get; set; }
+
     }
 }

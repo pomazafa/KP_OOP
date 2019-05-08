@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MyProject"
         xmlns:dg="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
         mc:Ignorable="d"
-        Title="Записи" Style="{StaticResource MyWindow}">
+        Title="Записи" Style="{StaticResource MyWindow}"
+        MinHeight="400" MinWidth="1000">
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -20,11 +21,23 @@
                   Name="ResSet"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="id пациента" Binding="{Binding PATIENT_ID}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding VISIT_DATE_TIME, StringFormat=dd/MM/yyyy}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Жалобы" Binding="{Binding COMPLAINTS}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Давление" Binding="{Binding PRESSURE}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Диагноз" Binding="{Binding DIAGNOSIS}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="id пациента" Binding="{Binding PATIENT_ID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding VISIT_DATE_TIME1, StringFormat=dd/MM/yyyy}" Width="auto"></DataGridTextColumn>
+                <dg:DataGridTemplateColumn Header="Жалобы" Width="*">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding COMPLAINTS}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
+                <DataGridTextColumn Header="Давление" Binding="{Binding PRESSURE}" Width="*"></DataGridTextColumn>
+                <dg:DataGridTemplateColumn Header="Диагноз" Width="*">
+                    <dg:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DIAGNOSIS}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </dg:DataGridTemplateColumn.CellTemplate>
+                </dg:DataGridTemplateColumn>
                 <DataGridTextColumn Header="Рост" Binding="{Binding HEIGHT}" Width="auto"></DataGridTextColumn>
                 <DataGridTextColumn Header="Вес" Binding="{Binding WEIGHT}" Width="auto"></DataGridTextColumn>
                 <dg:DataGridTemplateColumn Header="Дополнительно" Width="*">
