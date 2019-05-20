@@ -11,15 +11,31 @@
             <Setter Property="FontSize" Value="22"></Setter>
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="fon14.jpg" TileMode="None" />
+                    <ImageBrush ImageSource="fon8.jpg" TileMode="None" />
                 </Setter.Value>
             </Setter>
             <Setter Property="FontFamily" Value="Georgia"></Setter>
+            <Setter Property="Icon" Value="icon.png"></Setter>
         </Style>
 
-        <!-- что-то для вотермарка началось-->
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <Viewbox>
+                            <CalendarItem x:Name="PART_CalendarItem"
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--вотермарк-->
         <SolidColorBrush x:Key="brushWatermarkBackground" Color="#d2d0f0"/>
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="#968abf" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="#836dd6" />
         <SolidColorBrush x:Key="brushWatermarkBorder" Color="Gray" />
 
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -31,7 +47,7 @@
             <Setter Property="VerticalAlignment" Value="Stretch" />
         </Style>
         
-        <!-- что-то для вотермарка закончилось -->
+        <!-- вотермарк-->
 
         <Style x:Key="MyTextBox" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="#d2d0f0"></Setter>

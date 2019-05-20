@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,12 +21,24 @@ namespace MyProject
     public partial class AuthorizePatient : Window
     {
         UnitOfWork u;
+        List<PATIENT> patients;
         public AuthorizePatient()
         {
             InitializeComponent();
             u = new UnitOfWork();
+            try
+            {
+                Connect();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
-
+        private async void Connect()
+        {
+            await  Task.Run(() => patients = u.Patients.GetAll().ToList());
+        }
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             string name = Firstname.Text;
@@ -34,46 +47,45 @@ namespace MyProject
 
             ResSet.Items.Clear();
             ResSet.Items.Refresh();
-            foreach (PATIENT p in u.Patients.GetAll())
-            {
-                ResSet.Items.Add(p);
-            }
 
-            List<PATIENT> list = new List<PATIENT>();
-
-            if (name != "")
+            if (patients != null)
             {
-                list.AddRange(from a1 in u.Patients.GetAll() where a1.FIRSTNAME != name select a1);
-            }
+                List<PATIENT> list = new List<PATIENT>();
 
-            if (surname != "")
-            {
-                foreach (PATIENT p in ResSet.Items)
+                if (name != "")
                 {
-                    if (p.SURNAME != surname)
-                    {
-                        list.Add(p);
-                    }
+                    Regex regex = new Regex(@"(\w*)" + name + @"(\w*)");
+                    list.AddRange(from a1 in patients where regex.Matches(a1.FIRSTNAME).Count == 0 select a1);
                 }
-            }
-            ResSet.Items.Refresh();
-            if (date != "")
-            {
-                foreach (PATIENT p in ResSet.Items)
+
+                if (surname != "")
                 {
-                    if (p.BDAY != DateTime.Parse(date))
-                    {
-                        list.Add(p);
-                    }
+                    Regex regex = new Regex(@"(\w*)" + surname + @"(\w*)");
+                    list.AddRange(from a1 in patients where regex.Matches(a1.SURNAME).Count == 0 select a1);
                 }
-            }
-            foreach (PATIENT p in list)
-            {
-                if (ResSet.Items.Contains(p))
+                ResSet.Items.Refresh();
+                if (date != "")
                 {
-                    ResSet.Items.Remove(p);
+                    list.AddRange(from a1 in patients where a1.BDAY != DateTime.Parse(date) select a1);
+                }
+                if (list.Count != 0)
+                {
+                    foreach (PATIENT p in patients)
+                    {
+                        if (!list.Contains(p))
+                        {
+                            ResSet.Items.Add(p);
+                        }
+                    }
                     ResSet.Items.Refresh();
+
+                    if (ResSet.Items.Count == 0)
+                    {
+                        MessageBox.Show("Не найден пациент, удовлетворяющий запросу");
+                    }
                 }
+                else
+                    MessageBox.Show("Заполните поля для поиска");
             }
         }
 
@@ -88,6 +100,13 @@ namespace MyProject
             }
             else
                 MessageBox.Show("Выберите пациента");
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow wind = new MainWindow();
+            wind.Show();
+            Close();
         }
     }
 }

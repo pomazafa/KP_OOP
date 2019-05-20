@@ -20,6 +20,9 @@ namespace MyProject
     public partial class FirstWindowTherapist : Window
     {
         USERS user;
+        UnitOfWork u;
+        int countCompleted;
+        List<VISIT> completedVisits;
         public FirstWindowTherapist(USERS user)
         {
             InitializeComponent();
@@ -44,6 +47,30 @@ namespace MyProject
             MainWindow wind = new MainWindow();
             wind.Show();
             Close();
+        }
+
+        private void Statistic_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime dt = DateTime.Now.Date;
+            foreach (VISIT v in completedVisits)
+            {
+                dt += v.VISIT_DATE_TIME2 - v.VISIT_DATE_TIME1;
+            }
+            string result = "Терапевт " + user.SURNAME + "\nПациентов принято: " + countCompleted +
+                "\nИз них по талону: " + completedVisits.Where(v => v.IS_PLANNED == true).Count() +
+                "\nОбщее время приёмов: " + dt.TimeOfDay.Hours + ":" + dt.TimeOfDay.Minutes;
+            MessageBox.Show(result, "Статистика " + user.SURNAME + " за " + DateTime.Now.Day + "." + DateTime.Now.Month);
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => Connect());
+        }
+        private void Connect()
+        {
+            u = new UnitOfWork();
+            completedVisits = u.Visits.GetAll().Where((v) => v.VISIT_DATE_TIME1.Date == DateTime.Now.Date && v.IS_COMPLETED == true).ToList();
+            countCompleted = completedVisits.Count();
         }
     }
 }

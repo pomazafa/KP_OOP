@@ -4,18 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Loaded="Window_Loaded"
         Title="Главная"
         MinHeight="300" MinWidth="360"
         Style="{StaticResource MyWindow}" >
-    <Window.Background>
-        <ImageBrush ImageSource="fon14.jpg" TileMode="None" />
-    </Window.Background>
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top" Height="20" HorizontalAlignment="Stretch">
-            <MenuItem Header="Статистика"></MenuItem>
-
-            <MenuItem Header="Изменение записей" ></MenuItem>
+            <MenuItem Header="Статистика" Name="Statistic" Click="Statistic_Click"></MenuItem>
 
             <MenuItem Header="О программе" Name="About" Click="About_Click"></MenuItem>
 

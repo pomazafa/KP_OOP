@@ -33,9 +33,13 @@
             </DataGrid>
         </DockPanel>
 
-        <DockPanel Margin="20" Grid.Row="1" Grid.Column="0" LastChildFill="True" Grid.RowSpan="2">
+        <DockPanel Margin="20, 0, 0, 0" Grid.Row="1" Grid.Column="0" LastChildFill="True" Grid.RowSpan="2">
             <Label Content="Дата посещения: " DockPanel.Dock="Top"></Label>
-            <Calendar DockPanel.Dock="Bottom" Name="calendar" SelectedDatesChanged="ResSet_SelectionChanged"></Calendar>
+            <Calendar DockPanel.Dock="Bottom" Name="calendar" 
+                      SelectedDatesChanged="ResSet_SelectionChanged"
+                      Style="{DynamicResource styleCalendar}">
+            </Calendar>
+
         </DockPanel>
 
             <DataGrid  Grid.Row="1" Grid.Column="1" Margin="20" Grid.RowSpan="2"

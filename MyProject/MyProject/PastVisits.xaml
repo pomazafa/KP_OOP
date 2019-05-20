@@ -21,29 +21,29 @@
                   Name="ResSet"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="id пациента" Binding="{Binding PATIENT_ID}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding VISIT_DATE_TIME1, StringFormat=dd/MM/yyyy}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пациент" Binding="{Binding Path=p.SURNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Терапевт" Binding="{Binding  Path=user.SURNAME}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding  Path=v.VISIT_DATE_TIME1, StringFormat=dd/MM/yyyy}" Width="auto"></DataGridTextColumn>
                 <dg:DataGridTemplateColumn Header="Жалобы" Width="*">
-                    <dg:DataGridTemplateColumn.CellTemplate>
+                    <dg:DataGridTemplateColumn.CellTemplate> 
                         <DataTemplate>
-                            <TextBlock Text="{Binding COMPLAINTS}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding v.COMPLAINTS}" TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </dg:DataGridTemplateColumn.CellTemplate>
                 </dg:DataGridTemplateColumn>
-                <DataGridTextColumn Header="Давление" Binding="{Binding PRESSURE}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Давление" Binding="{Binding v.PRESSURE}" Width="auto"></DataGridTextColumn>
                 <dg:DataGridTemplateColumn Header="Диагноз" Width="*">
                     <dg:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DIAGNOSIS}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding v.DIAGNOSIS}" TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </dg:DataGridTemplateColumn.CellTemplate>
                 </dg:DataGridTemplateColumn>
-                <DataGridTextColumn Header="Рост" Binding="{Binding HEIGHT}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Вес" Binding="{Binding WEIGHT}" Width="auto"></DataGridTextColumn>
+               
                 <dg:DataGridTemplateColumn Header="Дополнительно" Width="*">
                     <dg:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ADDITIONAL_INFORMATION}" TextWrapping="WrapWithOverflow"/>
+                            <TextBlock Text="{Binding v.ADDITIONAL_INFORMATION}" TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </dg:DataGridTemplateColumn.CellTemplate>
                 </dg:DataGridTemplateColumn>

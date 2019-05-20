@@ -63,6 +63,7 @@ namespace MyProject
             Window_Loaded();
             ResSet.SelectedIndex = 0;
             datetime1 = dt;
+            Ok.Content = "Записать";
         }
 
         private void Window_Loaded()
@@ -98,7 +99,7 @@ namespace MyProject
                     {
                         var c = from a1 in u.Visits.GetAll()
                                 where a1.VISIT_DATE_TIME1 == a1.VISIT_DATE_TIME1.Date.AddHours(hour + i).AddMinutes(minutes[j])
-                                && ((USERS)ResSet.SelectedItem).USER_ID == a1.USER_ID
+                                && ((USERS)ResSet.SelectedItem).USER_ID == a1.USER_ID && a1.VISIT_DATE_TIME1.Date == calendar.SelectedDate
                                 select a1;
                         if (c.Count() == 0)
                             dates.Add(new MyTime(hour + i, minutes[j]));

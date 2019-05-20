@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,18 +74,14 @@ namespace MyProject
 
             if (name != "")
             {
-                list.AddRange(from a1 in u.Patients.GetAll() where a1.FIRSTNAME != name select a1);
+                Regex regex = new Regex(@"(\w*)" + name + @"(\w*)");
+                list.AddRange(from PATIENT a1 in ResSet.Items where regex.Matches(a1.FIRSTNAME).Count == 0 select a1);
             }
             
             if (surname != "")
             {
-                foreach (PATIENT p in ResSet.Items)
-                {
-                    if (p.SURNAME != surname)
-                    {
-                        list.Add(p);
-                    }
-                }
+                Regex regex = new Regex(@"(\w*)" + surname + @"(\w*)");
+                list.AddRange(from PATIENT a1 in ResSet.Items where regex.Matches(a1.SURNAME).Count == 0 select a1);
             }
             ResSet.Items.Refresh();
             if (date != "")

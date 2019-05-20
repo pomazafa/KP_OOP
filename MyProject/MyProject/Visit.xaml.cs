@@ -145,5 +145,12 @@ namespace MyProject
             NewRecipe wind = new NewRecipe(currentPatient, user);
             wind.ShowDialog();
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            FirstWindowTherapist wind = new FirstWindowTherapist(user);
+            wind.Show();
+            Close();
+        }
     }
 }

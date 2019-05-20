@@ -62,11 +62,15 @@
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
                 Grid.Column="3" Grid.Row="1"></Button>
-       
+
+        <Button Content="Отменить приём" Name="Cancel" Click="Cancel_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="3" Grid.Row="2" Grid.RowSpan="1"></Button>
         <Button Content="Завершить приём" Name="End" Click="End_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
-                Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"></Button>
+                Grid.Column="3" Grid.Row="3" Grid.RowSpan="1"></Button>
         <Button Content="Назад" Name="Back" Click="Back_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"

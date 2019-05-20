@@ -17,6 +17,19 @@ namespace MyProject
     /// <summary>
     /// Логика взаимодействия для PastVisits.xaml
     /// </summary>
+    /// 
+    class PatientTherapistVisit
+    {
+        public PATIENT p { get; set; }
+        public USERS user { get; set; }
+        public VISIT v { get; set; }
+        public PatientTherapistVisit(PATIENT p, USERS user, VISIT v)
+        {
+            this.p = p;
+            this.user = user;
+            this.v = v;
+        }
+    }
     public partial class PastVisits : Window
     {
 
@@ -35,10 +48,13 @@ namespace MyProject
 
             foreach (VISIT v in elements)
             {
-                ResSet.Items.Add(v);
+                ResSet.Items.Add(new PatientTherapistVisit(u.Patients.Get(v.PATIENT_ID.Value), u.Users.Get(v.USER_ID.Value), v));
             }
 
             Choose.Visibility = System.Windows.Visibility.Hidden;
+            this.Title = "Предыдущие посещения пациента " + p.SURNAME + " " + p.FATHERSNAME;
+            ResSet.SelectionMode = DataGridSelectionMode.Single;
+
         }
 
         public PastVisits(USERS user, DateTime dt)
@@ -50,8 +66,12 @@ namespace MyProject
             datetime1 = dt;
             foreach (VISIT v in elements)
             {
-                ResSet.Items.Add(v);
+                ResSet.Items.Add(new PatientTherapistVisit(u.Patients.Get(v.PATIENT_ID.Value), u.Users.Get(v.USER_ID.Value), v));
             }
+            this.Title = "Записи на сегодня";
+
+            ResSet.SelectionMode = DataGridSelectionMode.Single;
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

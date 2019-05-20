@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="Авторизация"  Style="{StaticResource MyWindow}">
+        Title="Авторизация"  Style="{StaticResource MyWindow}" MinHeight="500" MinWidth="700">
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -50,10 +50,13 @@
                 <DataGridTextColumn Header="Пол" Binding="{Binding GENDER}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+        <Button Content="Назад" Name="Back" Click="Back_Click"
+                Style="{DynamicResource MyButton}"
+                Template="{DynamicResource MyButtonTemplate}"
+                Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1"></Button>
         <Button Content="Выбрать" Name="Choose" Click="Choose_Click"
                 Style="{DynamicResource MyButton}"
                 Template="{DynamicResource MyButtonTemplate}"
-                Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"></Button>
+                Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1"></Button>
     </Grid>
 </Window>

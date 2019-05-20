@@ -193,13 +193,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fon9.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="fon8.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fon14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
