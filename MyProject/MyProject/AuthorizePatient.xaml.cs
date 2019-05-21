@@ -66,7 +66,11 @@ namespace MyProject
                 ResSet.Items.Refresh();
                 if (date != "")
                 {
-                    list.AddRange(from a1 in patients where a1.BDAY != DateTime.Parse(date) select a1);
+                    DateTime d;
+                    if (DateTime.TryParse(date, out d) && d < DateTime.Now)
+                        list.AddRange(from a1 in patients where a1.BDAY != d select a1);
+                    else
+                        MessageBox.Show("Дата рождения введена некорректно\n");
                 }
                 if (list.Count != 0)
                 {
@@ -85,7 +89,7 @@ namespace MyProject
                     }
                 }
                 else
-                    MessageBox.Show("Заполните поля для поиска");
+                    MessageBox.Show("Заполните поля для поиска корректной информацией");
             }
         }
 

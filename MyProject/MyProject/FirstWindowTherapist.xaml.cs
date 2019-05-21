@@ -39,7 +39,7 @@ namespace MyProject
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Программное средство терапевт, Дубень Полина, 2019г", "О программе");
+            MessageBox.Show("Программное средство терапевт\n Дубень Полина\n 2019г", "О программе");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

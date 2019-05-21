@@ -50,24 +50,20 @@ namespace MyProject
                 PrintDialog printDialog = new PrintDialog();
                 if (printDialog.ShowDialog() == true)
                 {
-                    // Создать текст
                     Run run = new Run("                                  Рецепт\n");
                     run.FontSize = 28;
 
                     Run run2 = new Run("Ф.И.О. пациента " + currentPat.SURNAME + " " + currentPat.FIRSTNAME + " " +
                         currentPat.FATHERSNAME + "\nМедикамент " + Med.Text + "\nВ количестве " + Quant.Text + "\nРецепт действенен по " + DateBlock.Text + "\n\nВрач " + user.SURNAME + " " + user.NAME + " " + user.FATHERSNAME + "\nПодпись   _______________\n\nПечать ___________________\n");
                     StackPanel stack = new StackPanel();
-                    // Поместить его в TextBlock
                     TextBlock visual = new TextBlock();
                     visual.Inlines.Add(run);
                     TextBlock visual2 = new TextBlock();
                     visual.Inlines.Add(run2);
 
-                    // Использовать поля для получения рамки страницы
                     visual.Margin = new Thickness(100);
                     visual.HorizontalAlignment = HorizontalAlignment.Stretch;
 
-                    // Разрешить перенос для заполнения всей ширины страницы
                     visual.TextWrapping = TextWrapping.Wrap;
 
                     stack.Children.Add(visual);
@@ -85,7 +81,7 @@ namespace MyProject
             }
             else
             {
-                MessageBox.Show("Заполните все поля");
+                MessageBox.Show("Заполните все поля! \nПроверьте дату на корректность!");
             }
         }
     }

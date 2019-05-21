@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyProject"
         mc:Ignorable="d"
-        Title="NewVisit" Style="{StaticResource MyWindow}"
+        Title="Новое посещение" Style="{StaticResource MyWindow}"
         MinHeight="460" MinWidth="600">
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -46,8 +46,8 @@
                   Name="Dates"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                <DataGridTextColumn Header="Часы" Binding="{Binding Path=Hours}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Минуты" Binding="{Binding Path=Minutes}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Часы" Binding="{Binding Path=Hours}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Минуты" Binding="{Binding Path=Minutes}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

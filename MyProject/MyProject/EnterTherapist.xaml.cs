@@ -66,6 +66,10 @@ namespace MyProject
                     else
                         MessageBox.Show("Неправильный логин или пароль");
                 }
+                else
+                {
+                    MessageBox.Show("Заполните поля!");
+                }
             }
             catch (Exception ex)
             {

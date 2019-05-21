@@ -45,10 +45,6 @@ namespace MyProject
             u = new UnitOfWork();
             pat = p;
 
-            //MyDatabase db = new MyDatabase();
-
-            //a = db.ADDRESS.Find(pat.ADDRESS_ID);
-
             a = u.Addresses.Get(p.ADDRESS_ID);
 
             Create.Content = "Изменить";
@@ -113,8 +109,7 @@ namespace MyProject
             
             if(Surname.Text != "" && FirstName.Text != "" && Street.Text != "" && House.Text != "")
             {
-                //MyDatabase db = new MyDatabase();
-                
+
                 PATIENT newP;
                 if (isNew)
                     newP = new PATIENT();
@@ -137,6 +132,10 @@ namespace MyProject
                 if (DateTime.TryParse(DateBlock.Text, out dt))
                 {
                     newP.BDAY = dt;
+                }
+                else
+                {
+                    MessageBox.Show("Дата рождения введена некорректно.\nЭто поле не будет занесено в базу данных");
                 }
 
                 if(Telephone.Text != "")
@@ -174,7 +173,6 @@ namespace MyProject
 
                 if (isNew)
                 {
-                    //db.ADDRESS.Add(newAdr);
                     u.Addresses.Create(newAdr);
                 }
 
@@ -186,9 +184,6 @@ namespace MyProject
 
                     u.Patients.Create(newP);
                     u.Save();
-                    //db.PATIENT.Add(newP);
-
-                    //db.SaveChanges();
                 }
 
                 SearchPatient wind = new SearchPatient(user, datetime1);
@@ -197,7 +192,7 @@ namespace MyProject
             }
             else
             {
-                MessageBox.Show("Заполните поля!!!!!!");
+                MessageBox.Show("Заполните поля!");
             }
         }
 

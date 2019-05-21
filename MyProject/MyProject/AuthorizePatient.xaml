@@ -46,7 +46,7 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SURNAME}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FIRSTNAME}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding FATHERSNAME}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BDAY, StringFormat=dd/MM/yyyy}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BDAY, StringFormat=dd.MM.yyyy}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Пол" Binding="{Binding GENDER}" Width="auto"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

@@ -50,7 +50,7 @@ namespace MyProject
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordHash.Text != "" && Login.Text != "" && Surname.Text != "" && Name.Text != "" && FathersName.Text != "" && (Change1.IsChecked == true || Change2.IsChecked == true))
+            if (PasswordHash.Text != "" && Login.Text != "" && Surname.Text != "" && Name.Text != "" && FathersName.Text != "")
             {
                 if (isNew)
                 {
@@ -65,23 +65,20 @@ namespace MyProject
                 user.NAME = Name.Text;
                 user.PASSWORD_HASH = int.Parse(PasswordHash.Text);
                 user.LOGIN = Login.Text;
-                if (Change1.IsChecked == true)
+                if (Change2.IsChecked == true)
                 {
-                    user.CHANGE = "1";
+                    user.CHANGE = "2";
                 }
                 else
                 {
-                    user.CHANGE = "2";
+                    user.CHANGE = "1";
                 }
                 if (isNew)
                 {
                     u.Users.Create(user);
                 }
                 u.Save();
-                //AdminWindow wind = new AdminWindow();
-                //wind.Show();
                 Close();
-
             }
             else
                 MessageBox.Show("Заполните все поля");

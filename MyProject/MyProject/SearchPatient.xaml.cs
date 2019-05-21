@@ -84,13 +84,19 @@ namespace MyProject
                 list.AddRange(from PATIENT a1 in ResSet.Items where regex.Matches(a1.SURNAME).Count == 0 select a1);
             }
             ResSet.Items.Refresh();
+            DateTime d;
             if (date != "")
             {
-                foreach (PATIENT p in ResSet.Items)
+                if (!DateTime.TryParse(date, out d))
+                    MessageBox.Show("Дата введена некорректно");
+                else
                 {
-                    if (p.BDAY != DateTime.Parse(date))
+                    foreach (PATIENT p in ResSet.Items)
                     {
-                        list.Add(p);
+                        if (p.BDAY != d)
+                        {
+                            list.Add(p);
+                        }
                     }
                 }
             }

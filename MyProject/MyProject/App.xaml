@@ -11,11 +11,11 @@
             <Setter Property="FontSize" Value="22"></Setter>
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="fon8.jpg" TileMode="None" />
+                    <ImageBrush ImageSource="pictures/fon8.jpg" TileMode="None" />
                 </Setter.Value>
             </Setter>
             <Setter Property="FontFamily" Value="Georgia"></Setter>
-            <Setter Property="Icon" Value="icon.png"></Setter>
+            <Setter Property="Icon" Value="pictures/icon.png"></Setter>
         </Style>
 
         <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
