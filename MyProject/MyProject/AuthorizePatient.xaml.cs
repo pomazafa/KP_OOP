@@ -26,6 +26,7 @@ namespace MyProject
         {
             InitializeComponent();
             u = new UnitOfWork();
+            ResSet.SelectionMode = DataGridSelectionMode.Single;
             try
             {
                 Connect();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -104,10 +105,43 @@ namespace MyProject
             Close();
         }
 
+
+        private bool ValidationText(string text)
+        {
+            Regex regex1 = new Regex(@"(\d+)");
+            Regex regex2 = new Regex(@"(\W+)");
+            MatchCollection matches1 = regex1.Matches(text);
+            MatchCollection matches2 = regex2.Matches(text);
+            if (matches1.Count > 0 || matches2.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool ValidationNumber(string text)
+        {
+            Regex regex = new Regex(@"(\D+)");
+            MatchCollection matches = regex.Matches(text);
+            if (matches.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             
-            if(Surname.Text != "" && FirstName.Text != "" && Street.Text != "" && House.Text != "")
+            if(Surname.Text != "" && FirstName.Text != "" && Street.Text != "" && House.Text != "" && 
+                ValidationText(Surname.Text) && ValidationText(FirstName.Text)
+                && ValidationNumber(House.Text) && ValidationText(Street.Text))
             {
 
                 PATIENT newP;
@@ -192,7 +226,7 @@ namespace MyProject
             }
             else
             {
-                MessageBox.Show("Заполните поля!");
+                MessageBox.Show("Заполните поля корректной информацией!");
             }
         }
 

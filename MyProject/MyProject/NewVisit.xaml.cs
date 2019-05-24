@@ -49,6 +49,7 @@ namespace MyProject
 
             Window_Loaded();
             ResSet.SelectedIndex = 0;
+            Dates.SelectionMode = DataGridSelectionMode.Single;
             this.p = p;
             datetime1 = DateTime.MinValue;
         }
@@ -59,6 +60,7 @@ namespace MyProject
             this.user = user;
             this.p = p;
             dates = new List<MyTime>();
+            Dates.SelectionMode = DataGridSelectionMode.Single;
             visits = new List<VISIT>();
             Window_Loaded();
             ResSet.SelectedIndex = 0;

@@ -71,6 +71,10 @@ namespace MyProject
                     MessageBox.Show("Заполните поля!");
                 }
             }
+            catch(ArgumentNullException ex)
+            {
+
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

@@ -53,8 +53,8 @@ namespace MyProject
                     Run run = new Run("                                  Рецепт\n");
                     run.FontSize = 28;
 
-                    Run run2 = new Run("Ф.И.О. пациента " + currentPat.SURNAME + " " + currentPat.FIRSTNAME + " " +
-                        currentPat.FATHERSNAME + "\nМедикамент " + Med.Text + "\nВ количестве " + Quant.Text + "\nРецепт действенен по " + DateBlock.Text + "\n\nВрач " + user.SURNAME + " " + user.NAME + " " + user.FATHERSNAME + "\nПодпись   _______________\n\nПечать ___________________\n");
+                    Run run2 = new Run("\t\tФ.И.О. пациента " + currentPat.SURNAME + " " + currentPat.FIRSTNAME + " " +
+                        currentPat.FATHERSNAME + "\n\t\tМедикамент " + Med.Text + "\n\t\tВ количестве " + Quant.Text + "\n\t\tРецепт действенен по " + DateBlock.Text + "\n\n\t\tВрач " + user.SURNAME + " " + user.NAME + " " + user.FATHERSNAME + "\n\t\tПодпись   ____________________\n");
                     StackPanel stack = new StackPanel();
                     TextBlock visual = new TextBlock();
                     visual.Inlines.Add(run);
@@ -68,12 +68,10 @@ namespace MyProject
 
                     stack.Children.Add(visual);
                     stack.Children.Add(visual2);
-                    // Установить размер элемента
                     Size pageSize = new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight);
                     visual.Measure(pageSize);
                     visual.Arrange(new Rect(0, 0, pageSize.Width, pageSize.Height));
                     stack.Orientation = Orientation.Vertical;
-                    // Напечатать элемент
                     printDialog.PrintVisual(stack, "Печать рецепта");
 
                     Close();

@@ -63,7 +63,7 @@
         </Grid>
         <Grid Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="3">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
-                <TextBlock Margin="5,2" Text="Телефон (Пример: 29-444-11-22 )" Foreground="{StaticResource brushWatermarkForeground}"
+                <TextBlock Margin="5,2" Text="Телефон" Foreground="{StaticResource brushWatermarkForeground}"
                         Visibility="{Binding ElementName=Telephone, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBox Name="Telephone" MaxLength="15" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
             </Grid>

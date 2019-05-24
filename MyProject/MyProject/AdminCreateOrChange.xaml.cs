@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,7 +51,8 @@ namespace MyProject
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordHash.Text != "" && Login.Text != "" && Surname.Text != "" && Name.Text != "" && FathersName.Text != "")
+            if (PasswordHash.Text != "" && Login.Text != "" && Surname.Text != "" && Name.Text != "" && FathersName.Text != ""
+                && ValidationText(Surname.Text) && ValidationText(Name.Text) && ValidationText(FathersName.Text))
             {
                 if (isNew)
                 {
@@ -81,7 +83,23 @@ namespace MyProject
                 Close();
             }
             else
-                MessageBox.Show("Заполните все поля");
+                MessageBox.Show("Заполните все поля корректной информацией");
+        }
+
+        private bool ValidationText(string text)
+        {
+            Regex regex1 = new Regex(@"(\d+)");
+            Regex regex2 = new Regex(@"(\W+)");
+            MatchCollection matches1 = regex1.Matches(text);
+            MatchCollection matches2 = regex2.Matches(text);
+            if (matches1.Count > 0 || matches2.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void Password_TextChanged(object sender, TextChangedEventArgs e)

@@ -85,7 +85,7 @@ namespace MyProject
         {
             if (ResSet.SelectedItem != null)
             {
-                VISIT v = (VISIT)ResSet.SelectedItem;
+                VISIT v = ((PatientTherapistVisit)ResSet.SelectedItem).v;
                 int pat = v.PATIENT_ID.Value;
                 currentPatient = u.Patients.Get(pat);
                 Visit wind = new Visit(currentPatient, user, v, datetime1);

@@ -22,6 +22,7 @@ namespace MyProject
         USERS user;
         UnitOfWork u;
         int countCompleted;
+        int countUnCompleted;
         List<VISIT> completedVisits;
         public FirstWindowTherapist(USERS user)
         {
@@ -58,7 +59,8 @@ namespace MyProject
             }
             string result = "Терапевт " + user.SURNAME + "\nПациентов принято: " + countCompleted +
                 "\nИз них по талону: " + completedVisits.Where(v => v.IS_PLANNED == true).Count() +
-                "\nОбщее время приёмов: " + dt.TimeOfDay.Hours + ":" + dt.TimeOfDay.Minutes;
+                "\nОбщее время приёмов: " + dt.TimeOfDay.Hours + ":" + dt.TimeOfDay.Minutes +
+                "\nОсталось непринятых пациентов по талону: " + countUnCompleted;
             MessageBox.Show(result, "Статистика " + user.SURNAME + " за " + DateTime.Now.Day + "." + DateTime.Now.Month);
         }
 
@@ -69,8 +71,9 @@ namespace MyProject
         private void Connect()
         {
             u = new UnitOfWork();
-            completedVisits = u.Visits.GetAll().Where((v) => v.VISIT_DATE_TIME1.Date == DateTime.Now.Date && v.IS_COMPLETED == true).ToList();
+            completedVisits = u.Visits.GetAll().Where((v) => v.VISIT_DATE_TIME1.Date == DateTime.Now.Date && v.IS_COMPLETED == true && v.USERS.USER_ID == user.USER_ID).ToList();
             countCompleted = completedVisits.Count();
+            countUnCompleted = u.Visits.GetAll().Where((v) => v.VISIT_DATE_TIME1.Date == DateTime.Now.Date && v.IS_COMPLETED == false && v.USERS.USER_ID == user.USER_ID).Count();
         }
     }
 }

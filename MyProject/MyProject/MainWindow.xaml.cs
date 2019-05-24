@@ -28,16 +28,24 @@ namespace MyProject
 
         private void EnterTher_Click(object sender, RoutedEventArgs e)
         {
-            EnterTherapist et = new EnterTherapist();
-            Close();
-            et.Show();
+            try
+            {
+                EnterTherapist et = new EnterTherapist();
+                Close();
+                et.Show();
+            }
+            catch { }
         }
 
         private void Patient_Click(object sender, RoutedEventArgs e)
         {
-            AuthorizePatient wind = new AuthorizePatient();
-            wind.Show();
-            Close();
+            try
+            {
+                AuthorizePatient wind = new AuthorizePatient();
+                wind.Show();
+                Close();
+            }
+            catch { }
         }
     }
 }
